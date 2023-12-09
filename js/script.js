@@ -138,9 +138,20 @@ function generateQA()
     var x = 1 + Math.round(9 * Math.random());
     var y = 1 + Math.round(9 * Math.random());
     //correct answer
-    correctAnswer = x * y;
+    //symbols array
+    var symbols = ["+", "-", "*"];
+    var symbol = Math.round(Math.random() * 3);
+    if (symbol == 0) {
+        correctAnswer = x + y;
+    }
+    else if (symbol == 1) {
+        correctAnswer = x - y;
+    }
+    else if (symbol == 2) {
+        correctAnswer = x * y;
+    }
     //setting question
-    document.querySelector("#question").innerHTML = x + " x " + y;
+    document.querySelector("#question").innerHTML = x + symbols[symbol] + y;
     //setting random position for correct answer
     var correctPosition = 1 + Math.round(3 * Math.random());
     document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
@@ -156,6 +167,6 @@ function generateQA()
             } while ((answers.indexOf(wrongAnswer)) > -1)
             document.querySelector("#box" + i).innerHTML = wrongAnswer;
             answers.push(wrongAnswer)
-        }
-    }
+        }
+    }
 }
