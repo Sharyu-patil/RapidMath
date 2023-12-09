@@ -135,12 +135,12 @@ function showElement(Id)
 function generateQA()
 {
     //generating random number between 1-9
-    var x = 1 + Math.round(9 * Math.random());
-    var y = 1 + Math.round(9 * Math.random());
+    var x = 1 + Math.floor(9 * Math.random());
+    var y = 1 + Math.floor(9 * Math.random());
     //correct answer
     //symbols array
     var symbols = ["+", "-", "*"];
-    var symbol = Math.round(Math.random() * 3);
+    var symbol = Math.floor(Math.random() * 3);
     if (symbol == 0) {
         correctAnswer = x + y;
     }
@@ -153,7 +153,7 @@ function generateQA()
     //setting question
     document.querySelector("#question").innerHTML = x + symbols[symbol] + y;
     //setting random position for correct answer
-    var correctPosition = 1 + Math.round(3 * Math.random());
+    var correctPosition = 1 + Math.floor(3 * Math.random());
     document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
 
     var answers = [correctAnswer];
@@ -163,7 +163,7 @@ function generateQA()
         if (i != correctPosition) {
             var wrongAnswer;
             do {
-                wrongAnswer = (1 + Math.round(9 * Math.random())) * (1 + Math.round(9 * Math.random()));
+                wrongAnswer = (1 + Math.floor(9 * Math.random())) * (1 + Math.floor(9 * Math.random()));
             } while ((answers.indexOf(wrongAnswer)) > -1)
             document.querySelector("#box" + i).innerHTML = wrongAnswer;
             answers.push(wrongAnswer)
