@@ -1,5 +1,6 @@
 var playing = false;
 var score = 0;
+var lifes = 3;
 var action;
 var timeRemaining;
 var correctAnswer;
@@ -64,6 +65,10 @@ for (let i = 1; i < 5; i++) {
                 //show wrong box and hide correct box
                 hideElement("correct");
                 showElement("wrong");
+                lifes--;
+                if (lifes == 0) {
+                    timeRemaining = 1;
+                }
                 setTimeout(() =>
                 {
                     hideElement("wrong");
@@ -72,6 +77,7 @@ for (let i = 1; i < 5; i++) {
         }
     }
 }
+ 
 
 function startCountdown()
 {
@@ -115,8 +121,15 @@ function hideElement(Id)
 }
 
 function showElement(Id)
-{
+{   if(Id == "wrong")
+    {
+    document.querySelector("#" + Id).innerHTML = "Lifes remaining:" + lifes;
     document.querySelector("#" + Id).style.display = "block";
+    return;
+    }
+
+    document.querySelector("#" + Id).style.display = "block";
+    // document.querySelector("#" + Id).innerHtml += rtr;
 }
 
 function generateQA()
@@ -143,6 +156,6 @@ function generateQA()
             } while ((answers.indexOf(wrongAnswer)) > -1)
             document.querySelector("#box" + i).innerHTML = wrongAnswer;
             answers.push(wrongAnswer)
-        }
-    }
+        }
+    }
 }
