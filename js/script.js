@@ -139,7 +139,7 @@ function generateQA()
     var y = 1 + Math.floor(9 * Math.random());
     //correct answer
     //symbols array
-    var symbols = ["+", "-", "*"];
+    var symbols = ["+", "-", "X"];
     var symbol = Math.floor(Math.random() * 3);
     if (symbol == 0) {
         correctAnswer = x + y;
